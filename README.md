@@ -3,7 +3,7 @@
 A contact application with Platform convertor.<br>
 -->Its Features:<br>
      - Hide/UnHide Contact with Local Authentication.<br>
-     - Call and Msg and Email functionality.<br>
+     - Call,Msg and Email functionality.<br>
      - Permanent Theme and Ui change.<br>
      - Permanent User Account.<br>
      - User Account Edit And Remove Options.<br>
