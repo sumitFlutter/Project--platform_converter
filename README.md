@@ -7,7 +7,9 @@ A contact application with Platform convertor.<br>
      - Permanent Theme and Ui change.<br>
      - Permanent User Account.<br>
      - User Account Edit And Remove Options.<br>
-     - Platform Convert System With Help Of Switch.<br>
+     - Platform Converter System With Help Of Switch.<br>
      - Edit and Delete Contact<br>
      - Share Contact<br>
      - All Langaauges are supported.<br>
+     - Add Contact with image.<br>
+     
