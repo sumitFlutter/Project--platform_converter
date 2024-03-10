@@ -1,8 +1,8 @@
 # first_advanced_project
 
 A contact application with Platform convertor.<br>
-<h1>-->Its Features:</h1>
-     - Hide/UnHide Contact with Local Authentication.<br>
+<h2>-->Its Features:</h2>
+     - Hide/UnHide Contact with Authentication.<br>
      - Call,Msg and Email functionality.<br>
      - Permanent Theme and Ui change.<br>
      - Permanent User Account.<br>
