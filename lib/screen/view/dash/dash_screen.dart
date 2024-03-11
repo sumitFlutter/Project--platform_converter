@@ -15,19 +15,19 @@ class DashScreen extends StatefulWidget {
 class _DashScreenState extends State<DashScreen> {
   ScreenProvider? providerR;
   ScreenProvider? providerW;
-  List<Widget> l1 = [const HomeScreen(), const AddDataScreen()];
 
   @override
   Widget build(BuildContext context) {
     providerW = context.watch<ScreenProvider>();
     providerR = context.read<ScreenProvider>();
     return Scaffold(
-      body: l1[providerW!.pageIndex],
+      body: providerR!.androidScreens[providerW!.pageIndex],
       bottomNavigationBar: NavigationBar(
         destinations: [
           NavigationDestination(icon: Icon(Icons.home), label: "Home"),
           NavigationDestination(
-              icon: Icon(Icons.person_add), label: "Add Contact")
+              icon: Icon(Icons.person_add), label: "Add Contact"),
+          NavigationDestination(icon: Icon(Icons.settings), label: "User & App's\n    Settings")
         ],
         onDestinationSelected: (value) {
           providerR!.changePage(index: value);
