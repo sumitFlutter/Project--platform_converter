@@ -10,6 +10,6 @@ A contact application with Platform convertor.<br>
      - Platform Converter System With Help Of Switch.<br>
      - Edit and Delete Contact<br>
      - Share Contact<br>
-     - All Langaauges are supported in SavingContacts and Display Contact.<br>
+     - All Langaauges are supported in Saving Contacts and Display Contact.<br>
      - Add Contact with image.<br>
      
