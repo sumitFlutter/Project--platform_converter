@@ -179,6 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     if(authR!.pPassword==txtIn.text)
                     {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("You entered Right Password")));
+                      Navigator.pop(context);
                       Navigator.pushNamed(context, "hide");
                       txtIn.clear();
                     }
@@ -187,6 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Try Again")));
                       txtIn.clear();
                       Navigator.pop(context);
+
                     }
                   }, child: const Text("Proceed ->")):Container(),
                   authR!.pPassword.isEmpty?TextButton(onPressed: () {
