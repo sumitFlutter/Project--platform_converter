@@ -41,13 +41,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         ),
         actions: [
           IconButton.outlined(onPressed: () {
-            isHidden==false?
-            editContact():
-                showDialog(context: context, builder: (context) {
-                  return AlertDialog(title: Text("Hidden Contact can't be edited!"),actions: [
-                    ElevatedButton(onPressed: () => Navigator.pop(context), child: Text("OK!"))
-                  ],);
-                },);
+            editContact();
           }, icon: const Icon(Icons.edit)),
           IconButton.outlined(onPressed: () {isHidden==true?
             showDialog(context: context, builder: (context) => AlertDialog(title: const Text("Are you sure to remove this contact form Hidden Contacts?"),actions: [
@@ -86,10 +80,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   Container(
                     child: listW![index!].image=="assets/image/profile.png"
                         ?
-                    const Center(
+                    Center(
                       child: CircleAvatar(
                         radius: 60,
-                        backgroundImage: AssetImage("assets/image/profile.png"),
+                        backgroundColor: Colors.primaries[index!].shade200,
+                        child: Center(child: Text(listW![index!].name!.substring(0,1),style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 30),)),
                       ),
                     ): Center(
                       child: CircleAvatar(
@@ -173,11 +168,24 @@ class _DetailsScreenState extends State<DetailsScreen> {
               Spacer(),
               BottomAppBar(child:  Center(
                 child: IconButton(onPressed: () {
-                  isHidden==false?
-                  providerR!.createHidden(index!):
-                      providerR!.hiddenRemove(index!);
-                  Navigator.pop(context);
-                },icon: isHidden==true?const Icon(Icons.lock_open_outlined):const Icon(Icons.lock_outlined),),
+                  showDialog(context: context, builder: (context) {
+                    return AlertDialog(
+                      title: Text("Are You Sure?"),
+                      actions: [
+                        ElevatedButton(onPressed: () {
+                          isHidden==false?
+                          providerR!.createHidden(index!):
+                          providerR!.hiddenRemove(index!);
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        }, child: Text("Yes!")),
+                        ElevatedButton(onPressed: () {
+                          Navigator.pop(context);
+                        }, child: Text("No!"))
+                      ],
+                    );
+                  },);
+                 },icon: isHidden==true?const Icon(Icons.lock_open_outlined):const Icon(Icons.lock_outlined),),
               ),)
             ],
           ),
@@ -186,10 +194,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
   }
   void editContact()
   {
-    txtMobile.text=providerR!.contactList[index!].mobile!;
-    txtE.text=providerR!.contactList[index!].email!;
-    txtName.text=providerR!.contactList[index!].name!;
-    providerR!.editP1(index!);
+    txtMobile.text=listR![index!].mobile!;
+    txtE.text=listR![index!].email!;
+    txtName.text=listR![index!].name!;
+    providerR!.editP1(index: index!, isHidden: isHidden!);
     showDialog(context: context, builder: (context) {
       return  Center(
         child: Material(
@@ -210,7 +218,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       child: Stack(
                         alignment: Alignment.center,
                         children: [
-                          providerW!.editI==null
+                          providerW!.editI=="assets/image/profile.png"
                               ?
                           const CircleAvatar(
                             radius: 90,
@@ -337,7 +345,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             }
                             else{
                             Contact c4=Contact(name: txtName.text, mobile: txtMobile.text, image: providerR!.editI, email: txtE.text);
-                            providerR!.updateContact(index: index!, c3: c4);
+                            providerR!.updateContact(index: index!, c3: c4,isHidden: isHidden!);
                               txtName.clear();
                               txtMobile.clear();
                               txtE.clear();

@@ -15,7 +15,6 @@ class ContactProvider with ChangeNotifier
   String? editI;
   String? path= "assets/image/profile.png";
   int step=0;
-
   void cancelStep()
   {
     if(step>0)
@@ -47,9 +46,9 @@ class ContactProvider with ChangeNotifier
     contactList.removeAt(index);
     notifyListeners();
   }
-  void editP1(int index)
+  void editP1({required int index,required bool isHidden})
   {
-    editI=contactList[index].image;
+    editI=isHidden==false?contactList[index].image:hiddenContactList[index].image;
     notifyListeners();
   }
   void editP2(String image1)
@@ -57,32 +56,10 @@ class ContactProvider with ChangeNotifier
     editI=image1;
     notifyListeners();
   }
-  void updateContact({required int index,required Contact c3})
+  void updateContact({required int index,required Contact c3,required bool isHidden})
   {
-    contactList[index]=c3;
+   isHidden==false?contactList[index]=c3:hiddenContactList[index]=c3;
     notifyListeners();
-  }
-  Future<bool?> lock()
-  async{
-    bool mainV=false;
-    bool check = await auth.canCheckBiometrics;
-    check=true;
-    print(check);
-    if(check)
-      {
-        List<BiometricType> l1 = await auth.getAvailableBiometrics();
-        if(l1.isNotEmpty)
-          {
-            if(l1.contains(BiometricType.weak)||l1.contains(BiometricType.strong)||l1.contains(BiometricType.fingerprint)||l1.contains(BiometricType.face)||l1.contains(BiometricType.iris))
-              {
-                mainV = await auth.authenticate(
-                    localizedReason: 'Please authenticate to proceed',
-                    options: AuthenticationOptions(useErrorDialogs: true,));
-              }
-              return mainV;
-          }
-      }
-
   }
   void createHidden(int index)
   {
@@ -96,11 +73,5 @@ class ContactProvider with ChangeNotifier
     contactList.add(hiddenContactList[index]);
     hiddenContactList.removeAt(index);
     notifyListeners();
-  }
-  void auth1()
-  async {
-    lock();
-    check1=await lock();
-
   }
 }

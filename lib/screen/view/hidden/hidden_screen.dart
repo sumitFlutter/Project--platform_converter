@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:platform_convertor/screen/providers/screen_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/contact_provider.dart';
@@ -22,6 +23,9 @@ class _HiddenScreenState extends State<HiddenScreen> {
     return SafeArea(
         child: Scaffold(
           appBar: AppBar(
+            leading: IconButton(onPressed: () {
+              Navigator.pushReplacementNamed(context, "dash");
+            },icon: Icon(Icons.arrow_back),),
             title: Text(
                 "My  Hidden Contacts",
                 style: Theme.of(context).textTheme.titleLarge

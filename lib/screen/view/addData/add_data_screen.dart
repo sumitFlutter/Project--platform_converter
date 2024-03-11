@@ -31,6 +31,7 @@ class _AddDataScreenState extends State<AddDataScreen> {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               title: Text(
                               "Create a new Contact",
                               style: Theme.of(context).textTheme.titleLarge
@@ -108,7 +109,7 @@ class _AddDataScreenState extends State<AddDataScreen> {
                             return null;
                           },
                           decoration: const InputDecoration(
-                              hintText: "Enter Your name",
+                              hintText: "Enter Contact name",
                               enabledBorder: OutlineInputBorder(),
                               suffixIcon: Icon(Icons.person)),
                         ),),
@@ -152,10 +153,6 @@ class _AddDataScreenState extends State<AddDataScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                         if (key.currentState!.validate()) {
-                          if (providerR!.path == null) {
-                            ScaffoldMessenger.of(context)!.showSnackBar(
-                                SnackBar(content: Text("Image is required")));
-                          } else {
                             Contact c2 = Contact(
                                 email: txtE.text,
                                 mobile: txtMobile.text,
@@ -174,7 +171,6 @@ class _AddDataScreenState extends State<AddDataScreen> {
                             providerR!.path= "assets/image/profile.png";
                             providerR!.step=0;
                           }
-                        }
                         else{
                           ScaffoldMessenger.of(context)!.showSnackBar(
                               const SnackBar(content: Text("All Fields are required")));

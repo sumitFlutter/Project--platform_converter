@@ -30,4 +30,24 @@ Future<bool?> applyUi() async {
   s1.getBool("ui");
   return s1.getBool("ui");
 }
+void saveKey({required String password}) async {
+  SharedPreferences s1 = await SharedPreferences.getInstance();
+  s1.setString("pass", password);
+}
+
+Future<String?> getKey() async {
+  SharedPreferences s1 = await SharedPreferences.getInstance();
+  s1.getString("pass");
+  return s1.getString("pass");
+}
+void saveAc({required List <String> l1}) async {
+  SharedPreferences s1 = await SharedPreferences.getInstance();
+  s1.setStringList("ac", l1);
+}
+
+Future<List<String>?> getAc() async {
+  SharedPreferences s1 = await SharedPreferences.getInstance();
+  s1.getStringList("ac");
+  return s1.getStringList("ac");
+}
 
