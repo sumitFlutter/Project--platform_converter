@@ -63,11 +63,8 @@ SettingProvider? providerW;
                           radius: 60,
                           backgroundImage: AssetImage(providerR!.pUserAc[0]),
                         ),
-                      SizedBox(height: 10,),
                       ListTile(title: Text(providerW!.pUserAc[1],style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),)),
-                      SizedBox(height: 10,),
                       ListTile(title: Text(providerW!.pUserAc[2],style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),)),
-                      SizedBox(height: 10,),
                       ListTile(title: Text(providerW!.pUserAc[3],style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),)),
                     ],),
                   ),
@@ -84,6 +81,7 @@ SettingProvider? providerW;
                           ElevatedButton(onPressed: () {
 
                           }, child: Text("Delete Your User Account")),
+                          Divider(),
                         ]
                       ),
                 ],
