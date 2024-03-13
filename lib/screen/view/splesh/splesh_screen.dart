@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:platform_convertor/screen/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
-import '../../providers/ui_provider.dart';
 
 class SpleshScreen_ extends StatefulWidget {
   const SpleshScreen_({super.key});
 
   @override
-  State<SpleshScreen_> createState() => _SpleshState();
+  State<SpleshScreen_> createState() => _SpleshScreenState();
 }
 
-class _SpleshState extends State<SpleshScreen_> {
+class _SpleshScreenState extends State<SpleshScreen_> {
   @override
   void initState() {
     super.initState();
     context.read<ThemeProvider>().getIntroStatus();
-    Future.delayed(const Duration(seconds: 3),() => Navigator.pushReplacementNamed(context, context.read<ThemeProvider>().introScreen?context.read<UiProvider>().pAppUi==false?"dash":"home":"intro"),);
+    Future.delayed(const Duration(seconds: 3),() => Navigator.pushReplacementNamed(context, context.read<ThemeProvider>().introScreen?"dash":"intro"),);
   }
   @override
   Widget build(BuildContext context) {

@@ -12,9 +12,15 @@ class ContactProvider with ChangeNotifier
   ];
   List<Contact> hiddenContactList=[
   ];
+  DateTime d1=DateTime.now();
   String? editI;
   String? path= "assets/image/profile.png";
   int step=0;
+  void changeDate(DateTime d2)
+  {
+    d1=d2;
+    notifyListeners();
+  }
   void cancelStep()
   {
     if(step>0)
@@ -25,7 +31,7 @@ class ContactProvider with ChangeNotifier
   }
   void continueStep()
   {
-    if(step<3)
+    if(step<4)
     {
       step++;
       notifyListeners();
