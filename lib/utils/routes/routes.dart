@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:platform_convertor/screen/view/details/details_ios_screen.dart';
+import 'package:platform_convertor/screen/view/hidden/hidden_ios_screen.dart';
 import 'package:platform_convertor/screen/view/settings/app_setting_screen.dart';
+import 'package:platform_convertor/screen/view/splesh/splesh_ios_screen.dart';
 
 import '../../screen/view/addData/add_data_ios_screen.dart';
 import '../../screen/view/addData/add_data_screen.dart';
@@ -19,11 +22,13 @@ Map <String,WidgetBuilder> myRouts={
   "add":(context) => const AddDataScreen(),
   "view":(context) => const DetailsScreen(),
   "hide":(context) => const HiddenScreen(),
-  "settings":(context) => SettingScreen(),
+  "settings":(context) => const SettingScreen(),
 };
 Map <String,WidgetBuilder> myRoutsIos={
-  "/":(context) => const SpleshScreen_(),
+  "/":(context) => const IosSpleshScreen(),
   "intro":(context) => const IntroScreen(),
-  "home":(context) => HomeScreenIos(),
-  "add":(context) => AddDataIosScreen(),
+  "home":(context) => const HomeScreenIos(),
+  "add":(context) => const AddDataIosScreen(),
+  "view":(context) => const DetailsIosScreen(),
+  "hide":(context) => HiddenScreenIos(),
 };

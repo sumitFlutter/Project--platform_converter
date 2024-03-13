@@ -148,6 +148,14 @@ class _AddDataScreenState extends State<AddDataScreen> {
                               enabledBorder: OutlineInputBorder(),
                               suffixIcon: Icon(Icons.mail)),
                         ),),
+                        Step(title: Text("Choose Birth Date"), content: Column(mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text("Birth Date => ${providerW!.d1.day}/${providerW!.d1.month}/${providerW!.d1.year}"),
+                          Center(child: ElevatedButton(onPressed: () async {
+                        DateTime? d2=await showDatePicker(context: context, firstDate: DateTime(1940), lastDate: DateTime(2050),initialDate: providerW!.d1);
+                        providerR!.changeDate(d2!);
+                          },child: Text("Choose"),),)
+                        ],))
                       ],currentStep: providerW!.step),
                 Center(
                   child: ElevatedButton(
@@ -159,7 +167,8 @@ class _AddDataScreenState extends State<AddDataScreen> {
                                 image: providerR!.path ==  "assets/image/profile.png"
                                     ? "assets/image/profile.png"
                                     : providerR!.path,
-                                name: txtName.text);
+                                name: txtName.text,
+                            d1: providerR!.d1);
                             providerR!.addData(c1: c2);
                             txtName.clear();
                             txtMobile.clear();
@@ -170,6 +179,7 @@ class _AddDataScreenState extends State<AddDataScreen> {
                             context.read<ScreenProvider>().changePage(index: 0);
                             providerR!.path= "assets/image/profile.png";
                             providerR!.step=0;
+                            providerR!.d1=DateTime.now();
                           }
                         else{
                           ScaffoldMessenger.of(context)!.showSnackBar(

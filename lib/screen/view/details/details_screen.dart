@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -121,7 +122,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   ),
                   const Column(
                     children: [
-                      CircleAvatar(child: Icon(Icons.message,size: 25,color: Colors.white,),backgroundColor: Colors.red,radius: 20,),
+                      CircleAvatar(child: Icon(Icons.video_call,size: 25,color: Colors.white,),backgroundColor: Colors.red,radius: 20,),
                       Text("Video Call",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),)
                     ],
                   ),
@@ -165,9 +166,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   await launchUrl(msg);
                 },  icon: const Icon(Icons.message)),
               ],),
+              SizedBox(height: 15,),
+              ListTile(title: Text("Birth Date:"),
+              trailing: listW![index!].d1==DateTime.now()?Text("Birth Date is Not Choosen Yet."):Text("${listW![index!].d1!.day}/${listW![index!].d1!.month}/${listW![index!].d1!.year}")),
               Spacer(),
-              BottomAppBar(child:  Center(
-                child: IconButton(onPressed: () {
+              BottomAppBar(
+                child:  Center(
+                child: IconButton.filledTonal(onPressed: () {
                   showDialog(context: context, builder: (context) {
                     return AlertDialog(
                       title: Text("Are You Sure?"),
@@ -198,166 +203,165 @@ class _DetailsScreenState extends State<DetailsScreen> {
     txtE.text=listR![index!].email!;
     txtName.text=listR![index!].name!;
     providerR!.editP1(index: index!, isHidden: isHidden!);
-    showDialog(context: context, builder: (context) {
-      return  Center(
+    showAdaptiveDialog(context: context, builder: (context) {
+      return  SingleChildScrollView(
         child: Material(
           child: Container(
             width: MediaQuery.sizeOf(context).width,
             margin: const EdgeInsets.all(15),
             padding: const EdgeInsets.all(15),
             color: Colors.primaries[index!].shade300,
-            child: SingleChildScrollView(
-              child: Form(
-                key: key,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      color: Colors.white,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          providerW!.editI=="assets/image/profile.png"
-                              ?
-                          const CircleAvatar(
-                            radius: 90,
-                            backgroundImage: AssetImage("assets/image/profile.png"),
-                          ): CircleAvatar(
-                            radius: 90,
-                            backgroundImage: FileImage(File(providerW!.editI!)),
-                          ),
-                          Align(
-                              alignment: const Alignment(0.8,0.8),
-                              child: IconButton(
-                                onPressed: () async {
-                                  ImagePicker picker = ImagePicker();
-                                  XFile? image = await picker.pickImage(
-                                      source: ImageSource.camera);
-                                    providerR!.editP2(image!.path);
-                                },
-                                icon: const Icon(
-                                  Icons.add_a_photo_rounded,
-                                  color: Colors.black,
-                                  weight: 50,
-                                ),
-                              )),
-                          Align(
-                              alignment: const Alignment(-0.8,-0.8),
-                              child: IconButton(
-                                onPressed: () async {
-                                  ImagePicker picker = ImagePicker();
-                                  XFile? image = await picker.pickImage(
-                                      source: ImageSource.gallery);
+            child: Form(
+              key: key,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    color: Colors.white,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        providerW!.editI=="assets/image/profile.png"
+                            ?
+                        const CircleAvatar(
+                          radius: 90,
+                          backgroundImage: AssetImage("assets/image/profile.png"),
+                        ): CircleAvatar(
+                          radius: 90,
+                          backgroundImage: FileImage(File(providerW!.editI!)),
+                        ),
+                        Align(
+                            alignment: const Alignment(0.8,0.8),
+                            child: IconButton(
+                              onPressed: () async {
+                                ImagePicker picker = ImagePicker();
+                                XFile? image = await picker.pickImage(
+                                    source: ImageSource.camera);
                                   providerR!.editP2(image!.path);
-                                },
-                                icon: const Icon(
-                                  Icons.photo,
-                                  color: Colors.black,
-                                  weight: 50,
-                                ),
-                              ))
-                        ],
-                      ),
+                              },
+                              icon: const Icon(
+                                Icons.add_a_photo_rounded,
+                                color: Colors.black,
+                                weight: 50,
+                              ),
+                            )),
+                        Align(
+                            alignment: const Alignment(-0.8,-0.8),
+                            child: IconButton(
+                              onPressed: () async {
+                                ImagePicker picker = ImagePicker();
+                                XFile? image = await picker.pickImage(
+                                    source: ImageSource.gallery);
+                                providerR!.editP2(image!.path);
+                              },
+                              icon: const Icon(
+                                Icons.photo,
+                                color: Colors.black,
+                                weight: 50,
+                              ),
+                            ))
+                      ],
                     ),
-                    const SizedBox(height: 5,),
-                    const Text(
-                      "Name:",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
-                    ),
-                    TextFormField(
-                      keyboardType: TextInputType.name,
-                      controller: txtName,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Name is required";
-                        }
-                        return null;
-                      },
-                      decoration: const InputDecoration(
-                          hintText: "Enter Your name",
-                          hintStyle: TextStyle(color: Colors.white)),
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Text(
-                      "Mobile Number:",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
-                    ),
-                    TextFormField(
-                      keyboardType: TextInputType.number,
-                      controller: txtMobile,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Mobile number is required";
-                        }
-                        if(value!.length!=10)
+                  ),
+                  const SizedBox(height: 5,),
+                  const Text(
+                    "Name:",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.name,
+                    controller: txtName,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Name is required";
+                      }
+                      return null;
+                    },
+                    decoration: const InputDecoration(
+                        hintText: "Enter Your name",
+                        hintStyle: TextStyle(color: Colors.white)),
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Text(
+                    "Mobile Number:",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.number,
+                    controller: txtMobile,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Mobile number is required";
+                      }
+                      if(value!.length!=10)
+                      {
+                        return "Enter valid number";
+                      }
+                      return null;
+                    },
+                    decoration: const InputDecoration(
+                        hintText: "Enter Mobile Number",
+                        hintStyle: TextStyle(color: Colors.white)),
+                    style: const TextStyle(color: Colors.white),
+        
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Text(
+                    "Email Address",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    controller: txtE,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "Email is required";
+                      }
+                      else if (!RegExp(
+                          "^[a-zA-Z0-9.!#\$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*\$")
+                          .hasMatch(value!)) {
+                        return "enter the valid email";
+                      }
+                      return null;
+                    },
+                    decoration: const InputDecoration(
+                        hintText: "Enter Your Email",
+                        hintStyle: TextStyle(color: Colors.white)),
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  const SizedBox(height: 10,),
+                  Text("${listW![index!].d1!.day}/${listW![index!].d1!.month}/${listW![index!].d1!.year}"),
+                  SizedBox(height: 2,),
+                  ElevatedButton(onPressed: () async {
+                  DateTime? d2 = await showDatePicker(context: context, firstDate: DateTime(1940), lastDate: DateTime(2050),initialDate: listR![index!].d1);
+                  providerR!.changeDate(d2!);
+                  }, child: Text("Change Birth date:")),
+                  SizedBox(height: 15,),
+                  Center(
+                    child: ElevatedButton(onPressed: () {
+                        if (key.currentState!.validate())
                         {
-                          return "Enter valid number";
-                        }
-                        return null;
-                      },
-                      decoration: const InputDecoration(
-                          hintText: "Enter Mobile Number",
-                          hintStyle: TextStyle(color: Colors.white)),
-                      style: const TextStyle(color: Colors.white),
-
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    const Text(
-                      "Email Address",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
-                    ),
-                    TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      controller: txtE,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Email is required";
-                        }
-                        else if (!RegExp(
-                            "^[a-zA-Z0-9.!#\$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*\$")
-                            .hasMatch(value!)) {
-                          return "enter the valid email";
-                        }
-                        return null;
-                      },
-                      decoration: const InputDecoration(
-                          hintText: "Enter Your Email",
-                          hintStyle: TextStyle(color: Colors.white)),
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                    const SizedBox(height: 15,),
-                    Center(
-                      child: ElevatedButton(onPressed: () {
-                          if (key.currentState!.validate())
-                          {
-                            if(providerR!.editI==null)
-                            {
-                              ScaffoldMessenger.of(context)!.showSnackBar(const SnackBar(content: Text("Image is required")));
-                            }
-                            else{
-                            Contact c4=Contact(name: txtName.text, mobile: txtMobile.text, image: providerR!.editI, email: txtE.text);
-                            providerR!.updateContact(index: index!, c3: c4,isHidden: isHidden!);
-                              txtName.clear();
-                              txtMobile.clear();
-                              txtE.clear();
-                              ScaffoldMessenger.of(context)!.showSnackBar(const SnackBar(content: Text("Your Contact is updated")));
-                              Future.delayed(const Duration(seconds: 1),() => Navigator.pop(context));
-                            }
-
+                          Contact c4=Contact(name: txtName.text, mobile: txtMobile.text, image: providerR!.editI, email: txtE.text,d1: providerR!.d1);
+                          providerR!.updateContact(index: index!, c3: c4,isHidden: isHidden!);
+                            txtName.clear();
+                            txtMobile.clear();
+                            txtE.clear();
+                            providerR!.d1=DateTime.now();
+                            ScaffoldMessenger.of(context)!.showSnackBar(const SnackBar(content: Text("Your Contact is updated")));
+                            Future.delayed(const Duration(seconds: 1),() => Navigator.pop(context));
                           }
-                      },child: Text("Submit",style: Theme.of(context).textTheme.labelLarge,),),
-                    )
-                  ],
-                ),
+                    },child: Text("Submit",style: Theme.of(context).textTheme.labelLarge,),),
+                  )
+                ],
               ),
             ),
           ),

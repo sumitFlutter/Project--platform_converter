@@ -99,6 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               const Spacer(),
                               Container(
+                                color: Colors.grey.shade50,
                                 child: IconButton(
                                     onPressed: () async {
                                      await launchUrl(Uri.parse("tel:+91${providerW!.contactList[index].mobile}"));
