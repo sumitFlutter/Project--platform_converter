@@ -162,6 +162,7 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
           width: MediaQuery.sizeOf(context).width,
           margin: const EdgeInsets.all(15),
           padding: const EdgeInsets.all(15),
+          color: CupertinoColors.white,
           child: Form(
             key: key,
             child: SingleChildScrollView(
@@ -233,8 +234,6 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                     },
                     decoration:BoxDecoration(border: Border.all()),
                         placeholder: "Enter Username",
-                        placeholderStyle: TextStyle(color: Colors.white),
-                    style: const TextStyle(color: Colors.white),
                   ),
                   const SizedBox(
                     height: 5,
@@ -259,8 +258,6 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                     },
                     decoration: BoxDecoration(border: Border.all()),
                         placeholder: "Enter Mobile Number",
-                        placeholderStyle: TextStyle(color: Colors.white),
-                    style: const TextStyle(color: Colors.white),
 
                   ),
                   const SizedBox(
@@ -285,10 +282,8 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                       }
                       return null;
                     },
-                    decoration: BoxDecoration(),
+                    decoration: BoxDecoration(border: Border.all()),
                         placeholder: "Enter Your Email",
-                        placeholderStyle: TextStyle(color: Colors.white),
-                    style: const TextStyle(color: Colors.white),
                   ),
                   const SizedBox(height: 15,),
                   Center(
@@ -413,8 +408,6 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                       },
                       decoration: BoxDecoration(border: Border.all()),
                           placeholder: "Enter Username",
-                          placeholderStyle: TextStyle(color: Colors.white),
-                      style: const TextStyle(color: Colors.white),
                     ),
                     const SizedBox(
                       height: 5,
@@ -440,7 +433,6 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                       },
                       decoration:BoxDecoration(border: Border.all()),
                           placeholder: "Enter Mobile Number",
-                          placeholderStyle: TextStyle(color: Colors.white),
                       style: const TextStyle(color: Colors.white),
 
                     ),
@@ -470,8 +462,6 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                       },
                       decoration: BoxDecoration(border: Border.all()),
                           placeholder: "Enter Your Email",
-                          placeholderStyle: TextStyle(color: Colors.white),
-                      style: const TextStyle(color: Colors.white),
                     ),
                     const SizedBox(height: 15,),
                     Center(
