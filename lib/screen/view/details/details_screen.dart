@@ -170,9 +170,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
               ListTile(title: Text("Birth Date:"),
               trailing: listW![index!].d1==DateTime.now()?Text("Birth Date is Not Choosen Yet."):Text("${listW![index!].d1!.day}/${listW![index!].d1!.month}/${listW![index!].d1!.year}")),
               Spacer(),
-              BottomAppBar(
-                child:  Center(
-                child: IconButton.filledTonal(onPressed: () {
+              InkWell(
+                onTap: () {
                   showDialog(context: context, builder: (context) {
                     return AlertDialog(
                       title: Text("Are You Sure?"),
@@ -190,8 +189,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       ],
                     );
                   },);
-                 },icon: isHidden==true?const Icon(Icons.lock_open_outlined):const Icon(Icons.lock_outlined),),
-              ),)
+                },
+                child: BottomAppBar(
+                  child:  Center(
+                  child: IconButton.filledTonal(onPressed: () {
+                   },icon: isHidden==true?const Icon(Icons.lock_open_outlined):const Icon(Icons.lock_outlined),),
+                ),),
+              )
             ],
           ),
         )

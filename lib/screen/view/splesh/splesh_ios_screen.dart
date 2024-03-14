@@ -15,7 +15,7 @@ class _IosSpleshScreenState extends State<IosSpleshScreen> {
   void initState() {
     super.initState();
     context.read<ThemeProvider>().getIntroStatus();
-    Future.delayed(const Duration(seconds: 3),() => context.read<ThemeProvider>().introScreen?Navigator.pushReplacementNamed(context, "home"):Navigator.pushReplacementNamed(context, "intro"));
+    Future.delayed(const Duration(seconds: 3),() => context.read<ThemeProvider>().introScreen?Navigator.pushReplacementNamed(context, "dash"):Navigator.pushReplacementNamed(context, "intro"));
   }
   @override
   Widget build(BuildContext context) {

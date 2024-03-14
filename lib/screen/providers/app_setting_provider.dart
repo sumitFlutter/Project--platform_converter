@@ -3,6 +3,8 @@ import 'package:platform_convertor/utils/shared_helper.dart';
 
 class SettingProvider with ChangeNotifier
 {
+  bool oldPass=false;
+  bool isPass=false;
   bool isUser=false;
   String uImage="assets/image/profile.png";
   List <String> pUserAc=[];
@@ -32,5 +34,24 @@ class SettingProvider with ChangeNotifier
     uImage=p1;
     notifyListeners();
   }
-
+  void passToggle()
+  {
+    isPass=!isPass;
+    notifyListeners();
+  }
+void editPath(String e1)
+{
+  uImage=e1;
+  notifyListeners();
+}
+void truePass()
+{
+  oldPass=true;
+  notifyListeners();
+}
+void falsePass()
+{
+  oldPass=false;
+  notifyListeners();
+}
 }

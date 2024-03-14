@@ -11,7 +11,13 @@ class AuthProvider with ChangeNotifier{
 }
 void getPPass()
 async {
-  pPassword=(await getKey())!;
-  notifyListeners();
+    if(await getKey()==null)
+        {
+          pPassword="";
+        }
+    else{
+           pPassword=(await getKey())!;
+        }
+   notifyListeners();
 }
 }
