@@ -206,15 +206,14 @@ class _DetailsIosScreenState extends State<DetailsIosScreen> {
     txtName.text=listR![index!].name!;
     providerR!.editP1(index: index!, isHidden: isHidden!);
     showCupertinoDialog(context: context, builder: (context) {
-      return  SingleChildScrollView(
-        child: Material(
-          child: Container(
-            width: MediaQuery.sizeOf(context).width,
-            margin: const EdgeInsets.all(15),
-            padding: const EdgeInsets.all(15),
-            color: Colors.primaries[index!].shade300,
-            child: Form(
-              key: key,
+      return  Material(
+        child: Container(
+          width: MediaQuery.sizeOf(context).width,
+          margin: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
+          child: Form(
+            key: key,
+            child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
@@ -311,7 +310,7 @@ class _DetailsIosScreenState extends State<DetailsIosScreen> {
                         placeholder: "Enter Mobile Number",
                         placeholderStyle: TextStyle(color: Colors.white),
                     style: const TextStyle(color: Colors.white),
-
+                    
                   ),
                   const SizedBox(
                     height: 5,
