@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:platform_convertor/screen/providers/screen_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/auth_provider.dart';
@@ -36,10 +37,12 @@ class _HomeScreenIosState extends State<HomeScreenIos> {
     return SafeArea(
       child: CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
+          automaticallyImplyLeading: false,
           middle: const Text("Contact App Ios"),
             trailing:GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, "add");
+                context.read<ScreenProvider>().changePageIos(index: 1);
+                Navigator.pushNamed(context, "dash");
               },
                 child: Icon(CupertinoIcons.person_add,color: CupertinoColors.black,)),
         ),

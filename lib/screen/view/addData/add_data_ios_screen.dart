@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:platform_convertor/screen/providers/screen_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../model/contact_model.dart';
@@ -32,6 +33,7 @@ class _AddDataIosScreenState extends State<AddDataIosScreen> {
       child: SafeArea(
         child: CupertinoPageScaffold(
             navigationBar: CupertinoNavigationBar(
+              automaticallyImplyLeading: false,
               middle: Text("Add Contact Screen Ios"),
             ),
             child: SingleChildScrollView(
@@ -173,7 +175,8 @@ class _AddDataIosScreenState extends State<AddDataIosScreen> {
                               providerR!.addData(c1: c1);
                               providerR!.d1=DateTime.now();
                               providerR!.path= "assets/image/profile.png";
-                              Navigator.pop(context);
+                              context.read<ScreenProvider>().changePageIos(index: 0);
+                              Navigator.pushNamed(context, "dash");
                             }
                           },
                           child: const Text("Submit")),

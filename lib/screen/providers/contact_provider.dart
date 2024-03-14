@@ -80,4 +80,9 @@ class ContactProvider with ChangeNotifier
     hiddenContactList.removeAt(index);
     notifyListeners();
   }
+  void resetHidden()
+  {
+    hiddenContactList.clear();
+    notifyListeners();
+  }
 }
