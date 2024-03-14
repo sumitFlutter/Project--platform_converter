@@ -272,6 +272,7 @@ class _DetailsIosScreenState extends State<DetailsIosScreen> {
                         fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
                   ),
                   CupertinoTextFormFieldRow(
+                    prefix: Icon(CupertinoIcons.person),
                     decoration: BoxDecoration(border: Border.all()),
                     keyboardType: TextInputType.name,
                     controller: txtName,
@@ -282,8 +283,6 @@ class _DetailsIosScreenState extends State<DetailsIosScreen> {
                       return null;
                     },
                     placeholder: "Enter Your name",
-                    placeholderStyle: TextStyle(color: CupertinoColors.white),
-                    style:  TextStyle(color: CupertinoColors.white),
                   ),
                   const SizedBox(
                     height: 5,
@@ -294,6 +293,7 @@ class _DetailsIosScreenState extends State<DetailsIosScreen> {
                         fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
                   ),
                   CupertinoTextFormFieldRow(
+                    prefix: Icon(CupertinoIcons.phone),
                     decoration: BoxDecoration(border: Border.all()),
                     keyboardType: TextInputType.number,
                     controller: txtMobile,
@@ -308,8 +308,6 @@ class _DetailsIosScreenState extends State<DetailsIosScreen> {
                       return null;
                     },
                         placeholder: "Enter Mobile Number",
-                        placeholderStyle: TextStyle(color: Colors.white),
-                    style: const TextStyle(color: Colors.white),
                     
                   ),
                   const SizedBox(
@@ -321,6 +319,7 @@ class _DetailsIosScreenState extends State<DetailsIosScreen> {
                         fontWeight: FontWeight.bold, fontSize: 15,color: Colors.white),
                   ),
                   CupertinoTextFormFieldRow(
+                    prefix: Icon(CupertinoIcons.mail),
                     decoration: BoxDecoration(border: Border.all()),
                     keyboardType: TextInputType.emailAddress,
                     controller: txtE,
@@ -336,8 +335,6 @@ class _DetailsIosScreenState extends State<DetailsIosScreen> {
                       return null;
                     },
                         placeholder: "Enter Your Email",
-                        placeholderStyle: TextStyle(color: Colors.white),
-                    style: const TextStyle(color: Colors.white),
                   ),
                   const SizedBox(height: 10,),
                   Text("${listW![index!].d1!.day}/${listW![index!].d1!.month}/${listW![index!].d1!.year}"),
