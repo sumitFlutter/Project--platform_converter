@@ -157,14 +157,14 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
     txtE.clear();
     providerR!.editPath("assets/image/profile.png");
     showCupertinoDialog(context: context, builder: (context) {
-      return  SingleChildScrollView(
-        child: Center(
-          child: Container(
-            width: MediaQuery.sizeOf(context).width,
-            margin: const EdgeInsets.all(15),
-            padding: const EdgeInsets.all(15),
-            child: Form(
-              key: key,
+      return  Center(
+        child: Container(
+          width: MediaQuery.sizeOf(context).width,
+          margin: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
+          child: Form(
+            key: key,
+            child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
@@ -330,17 +330,17 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
     txtMobile.text = providerR!.pUserAc[2];
     txtE.text = providerR!.pUserAc[3];
     showCupertinoDialog(context: context, builder: (context) {
-      return SingleChildScrollView(
-        child: Center(
-          child: Material(
-            child: Container(
-              width: MediaQuery
-                  .sizeOf(context)
-                  .width,
-              margin: const EdgeInsets.all(15),
-              padding: const EdgeInsets.all(15),
-              child: Form(
-                key: key,
+      return Center(
+        child: Material(
+          child: Container(
+            width: MediaQuery
+                .sizeOf(context)
+                .width,
+            margin: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
+            child: Form(
+              key: key,
+              child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
