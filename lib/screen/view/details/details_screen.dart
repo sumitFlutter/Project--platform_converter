@@ -193,6 +193,23 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 child: BottomAppBar(
                   child:  Center(
                   child: IconButton.filledTonal(onPressed: () {
+                    showDialog(context: context, builder: (context) {
+                      return AlertDialog(
+                        title: Text("Are You Sure?"),
+                        actions: [
+                          ElevatedButton(onPressed: () {
+                            isHidden==false?
+                            providerR!.createHidden(index!):
+                            providerR!.hiddenRemove(index!);
+                            Navigator.pop(context);
+                            Navigator.pop(context);
+                          }, child: Text("Yes!")),
+                          ElevatedButton(onPressed: () {
+                            Navigator.pop(context);
+                          }, child: Text("No!"))
+                        ],
+                      );
+                    },);
                    },icon: isHidden==true?const Icon(Icons.lock_open_outlined):const Icon(Icons.lock_outlined),),
                 ),),
               )

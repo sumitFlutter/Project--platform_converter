@@ -211,6 +211,7 @@ class _DetailsIosScreenState extends State<DetailsIosScreen> {
           width: MediaQuery.sizeOf(context).width,
           margin: const EdgeInsets.all(15),
           padding: const EdgeInsets.all(15),
+          color: CupertinoColors.black,
           child: Form(
             key: key,
             child: SingleChildScrollView(
